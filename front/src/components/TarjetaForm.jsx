@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 
 function TarjetaForm({ isOpen, onClose }) {
   const [tarjetasDisponibles, setTarjetasDisponibles] = useState([]);
@@ -58,7 +59,7 @@ function TarjetaForm({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-      <ToastContainer autoClose={1500} />
+      <Toaster />
 
       <form
         onSubmit={handleSubmit(onSubmit)}

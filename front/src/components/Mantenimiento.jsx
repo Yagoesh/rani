@@ -1,7 +1,11 @@
-function Mantenimiento({ onClose, openModal }) {
+const Mantenimiento = ({ onClose, openModal }) => {
   const handleIlunion = () => {
     onClose("Mantenimiento");
     openModal("IlunionModal");
+  };
+  const handleAquaService = () => {
+    onClose("Mantenimiento");
+    openModal("AquaService");
   };
   return (
     <div className="text-center">
@@ -12,11 +16,15 @@ function Mantenimiento({ onClose, openModal }) {
       >
         Ilunion
       </button>
-      <button className="bg-green-500  text-white py-2 px-4 rounded hover:bg-red-600">
+
+      <button
+        onClick={handleAquaService}
+        className="bg-green-500  text-white py-2 px-4 rounded hover:bg-red-600"
+      >
         AquaService
       </button>
     </div>
   );
-}
+};
 
 export default Mantenimiento;
