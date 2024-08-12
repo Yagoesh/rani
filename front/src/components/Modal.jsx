@@ -3,6 +3,7 @@ import Parking from "./Parking";
 import Mantenimiento from "./Mantenimiento";
 import IlunionModal from "./IlunionModal";
 import AquaServiceModal from "./AquaServiceModal";
+import IncidenciasModal from "./Incidencias";
 
 function Modal({ onClose, content, openModal }) {
   let modalContent;
@@ -22,6 +23,9 @@ function Modal({ onClose, content, openModal }) {
       break;
     case "AquaService":
       modalContent = <AquaServiceModal />;
+      break;
+    case "Incidencias":
+      modalContent = <IncidenciasModal />;
       break;
     default:
       modalContent = null;

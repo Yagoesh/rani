@@ -94,6 +94,17 @@ const initDb = async () => {
         `);
     console.log("Tabla aquaService creada ✅ 📑");
 
+    // Crear la tabla Incidencias
+    console.log("Creando la tabla incidencias 📑");
+    await pool.query(`
+        CREATE TABLE incidencias (
+      fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+      servicio VARCHAR(100),
+      observaciones VARCHAR(100)
+    );
+        `);
+    console.log("Tabla incidencias creada ✅ 📑");
+
     console.log("Base de datos inicializada 🚀");
     process.exit(0);
   } catch (error) {

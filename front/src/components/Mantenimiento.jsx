@@ -7,6 +7,10 @@ const Mantenimiento = ({ onClose, openModal }) => {
     onClose("Mantenimiento");
     openModal("AquaService");
   };
+  const handleIncidencias = () => {
+    onClose("Mantenimiento");
+    openModal("Incidencias");
+  };
   return (
     <div className="text-center w-full">
       <h2 className="text-2xl mb-4">Mantenimiento</h2>
@@ -22,6 +26,12 @@ const Mantenimiento = ({ onClose, openModal }) => {
         className="bg-green-500  text-white py-2 px-4 rounded hover:bg-red-600"
       >
         AquaService
+      </button>
+      <button
+        onClick={handleIncidencias}
+        className="bg-green-500  text-white py-2 px-4 rounded hover:bg-red-600"
+      >
+        Incidencias
       </button>
     </div>
   );
