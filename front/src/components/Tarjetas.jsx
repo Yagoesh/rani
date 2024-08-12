@@ -21,7 +21,6 @@ function Tarjetas() {
   useEffect(() => {
     getAllTarjetasApi();
   }, [isModalOpen]);
-
   const handleDevuelto = async (tarjetaNumero) => {
     try {
       await axios.put(`http://localhost:4000/tarjetas/modify`, {

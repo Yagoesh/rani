@@ -1,24 +1,27 @@
-function Menu({ onMenuClick }) {
+import { NavLink } from "react-router-dom";
+
+function Menu() {
   return (
-    <nav className="absolute top-5 flex space-x-4">
-      <button
-        onClick={() => onMenuClick("Tarjetas")}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+    <nav>
+      <NavLink
+        to="/tarjetas"
+        className="  text-white font-bold bg-primary hover:bg-slate-600 px-4 py-1 rounded-md duration-500"
       >
         Tarjetas
-      </button>
-      <button
-        onClick={() => onMenuClick("Parking")}
-        className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+      </NavLink>
+
+      <NavLink
+        to="/parking"
+        className="text-white font-bold bg-primary hover:bg-slate-600 px-4 py-1 rounded-md duration-500"
       >
         Parking
-      </button>
-      <button
-        onClick={() => onMenuClick("Mantenimiento")}
-        className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+      </NavLink>
+      <NavLink
+        to="/mantenimiento"
+        className="text-white font-bold bg-primary hover:bg-slate-600 px-4 py-1 rounded-md duration-500"
       >
         Mantenimiento
-      </button>
+      </NavLink>
     </nav>
   );
 }

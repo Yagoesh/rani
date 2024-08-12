@@ -8,7 +8,7 @@ const Mantenimiento = ({ onClose, openModal }) => {
     openModal("AquaService");
   };
   return (
-    <div className="text-center">
+    <div className="text-center w-full">
       <h2 className="text-2xl mb-4">Mantenimiento</h2>
       <button
         onClick={handleIlunion}
