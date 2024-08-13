@@ -101,7 +101,7 @@ function Tarjetas() {
       </div>
       <div className="flex justify-center mt-6">
         <button
-          className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600"
+          className="bg-green-500 text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600"
           onClick={() => {
             openModal();
           }}

@@ -2,7 +2,7 @@ import Parking from "../components/Parking";
 
 function ParkingPage() {
   return (
-    <div className=" h-[75vh]">
+    <div className=" h-[78vh]">
       <Parking />
     </div>
   );

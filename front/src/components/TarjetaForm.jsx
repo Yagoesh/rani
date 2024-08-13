@@ -129,7 +129,7 @@ function TarjetaForm({ isOpen, onClose }) {
           <button
             type="submit"
             disabled={!isValid}
-            className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600"
+            className="bg-green-500 text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600"
           >
             +
           </button>
