@@ -14,8 +14,8 @@ export const insertTarjetaUsoController = async (req, res, next) => {
       nombre,
       departamento
     );
-    console.log("tarjeta entregada correctamente!");
-    // responder con los tarjetas
+
+    // responder con el resultado
     res.status(200).send({
       status: "Ok",
       message: "Tarjeta entregada correctamente",

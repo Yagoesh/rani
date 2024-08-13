@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 // import { toast, ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function TarjetaForm({ isOpen, onClose }) {
   const [tarjetasDisponibles, setTarjetasDisponibles] = useState([]);
@@ -13,7 +13,7 @@ function TarjetaForm({ isOpen, onClose }) {
       const tarjetas = await axios.get(
         `http://localhost:4000/tarjetas/disponibles`
       );
-      console.log(tarjetas);
+
       setTarjetasDisponibles(tarjetas.data.data.tarjetas);
     } catch (error) {
       console.log(error.message);
@@ -42,10 +42,11 @@ function TarjetaForm({ isOpen, onClose }) {
         data
       );
 
-      if (response.data.status === "OK" || response.data.status === 200) {
-        toast.success("Tarjeta entregada correctamente");
-        reset();
-        return;
+      if (response.data.status === "Ok" || response.data.status === 200) {
+        toast.success("Tarjeta entregada correctamente", { duration: 2000 });
+        setTimeout(() => {
+          onClose();
+        }, 100);
       }
     } catch (error) {
       toast.error(
@@ -59,8 +60,6 @@ function TarjetaForm({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-      <Toaster />
-
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-6 rounded shadow-lg w-96"
@@ -73,7 +72,7 @@ function TarjetaForm({ isOpen, onClose }) {
             {...register("nombre", { required: "Nombre es requerido" })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Nombre Completo"
+            placeholder="Nombre Completo..."
           />
           {errors.nombre && <p>{errors.nombre.message}</p>}
         </div>
@@ -86,7 +85,7 @@ function TarjetaForm({ isOpen, onClose }) {
             })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Departamento"
+            placeholder="Departamento..."
           />
           {errors.departamento && <p>{errors.departamento.message}</p>}
         </div>
@@ -102,7 +101,7 @@ function TarjetaForm({ isOpen, onClose }) {
               },
             })}
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Número de Tarjeta"
+            placeholder="Nº Tarjeta..."
           >
             {tarjetasDisponibles.map((tarjeta) => (
               <option key={tarjeta.tarjetaNumero} value={tarjeta.tarjetaNumero}>
@@ -121,7 +120,7 @@ function TarjetaForm({ isOpen, onClose }) {
             })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Responsable"
+            placeholder="Responsable..."
           />
           {errors.responsable && <p>{errors.responsable.message}</p>}
         </div>

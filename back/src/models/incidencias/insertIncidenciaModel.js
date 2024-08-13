@@ -4,7 +4,6 @@ export const insertIncidenciaModel = async (servicio, observaciones) => {
     // Crear la conexión a la base de datos.
     const pool = await getPool();
 
-    // Obtener las parking.
     const result = await pool.query(
       `INSERT INTO incidencias (servicio , observaciones) VALUES (?, ?) `,
       [servicio, observaciones]

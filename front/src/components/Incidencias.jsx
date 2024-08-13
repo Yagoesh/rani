@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import IncidenciasForm from "./IncidenciasForm";
 import { dateFormat } from "../api/dateFormat";
+import { Toaster } from "react-hot-toast";
 
 function IncidenciasModal() {
   const [allIncidencias, setAllIncidencias] = useState([]);
@@ -20,6 +21,7 @@ function IncidenciasModal() {
   const closeModal = () => setIsModalOpen(false);
   return (
     <div className="text-center">
+      <Toaster />
       <h2 className="text-2xl mb-4">Incidencias</h2>
       <div className="max-h-[400px] min-h-[400px]  overflow-auto p-4">
         <table className="border-collapse table-fixed w-full overflow-auto ">

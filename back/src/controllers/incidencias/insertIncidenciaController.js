@@ -2,13 +2,15 @@ import { insertIncidenciaModel } from "../../models/incidencias/index.js";
 
 export const insertIncidenciaController = async (req, res, next) => {
   try {
+    // sacamos del body los inputs
     const { servicio, observaciones } = req.body;
+    // introducimos la incidencia en la bbdd
     const [result] = await insertIncidenciaModel(servicio, observaciones);
 
-    // responder con los tarjetas
+    // responder con el resultado
     res.status(200).send({
       status: "Ok",
-      message: "Servicio Incidencia añadido correctamente",
+      message: "Incidencia añadida correctamente",
       data: { result },
     });
   } catch (error) {

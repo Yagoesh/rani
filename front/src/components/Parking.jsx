@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ParkingForm from "./ParkingForm";
 import { dateFormat } from "../api/dateFormat";
+import { Toaster } from "react-hot-toast";
+import { formatDate } from "../api/formatDate";
 
 function Parking() {
   const [isParkingModalOpen, setIsParkingModalOpen] = useState(false);
@@ -25,30 +27,34 @@ function Parking() {
 
   return (
     <div className="text-center">
+      <Toaster />
       <h2 className="text-2xl mb-4">Parking</h2>
 
-      <div className="max-h-[400px] min-h-[400px]  overflow-auto p-4">
-        <table className="border-collapse table-fixed  overflow-auto ">
+      <div className="max-h-[400px] min-h-[400px]  overflow-auto ">
+        <table className="border-collapse table-fixed  overflow-fit">
           <tr className=" bg-gray-100">
             <th className=" w-1/5">Fecha </th>
-            <th className=" w-1/5 ">Nombre</th>
-            <th className="  w-1/5  ">E-mail</th>
+            <th className="  ">Nombre</th>
+            <th className="max-w-[1/5]">E-mail</th>
             <th className=" ">Plaza</th>
-            <th className=" w-1/5">Reserva</th>
-            <th className=" w-1/5">Estado</th>
+            <th className=" ">Reserva</th>
+            <th className="">Estado</th>
           </tr>
           <tbody>
             {allParkings
               .sort(
                 (a, b) => new Date(a.fechaReserva) - new Date(b.fechaReserva)
               )
-              .map((parking) => {
-                const date = dateFormat(parking.fecha);
 
-                const reservaDate = dateFormat(parking.fechaReserva);
+              .map((parking) => {
+                const date = formatDate(dateFormat(parking.fecha));
+
+                const reservaDate = formatDate(
+                  dateFormat(parking.fechaReserva)
+                );
                 return (
                   <tr
-                    className="p-2 border-t border-gray-300"
+                    className="p-2 border-t border-gray-300 text-sm"
                     key={parking.idUsoParking}
                   >
                     <td className="p-2">{reservaDate}</td>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 // import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function ParkingForm({ isOpen, onClose }) {
   const {
@@ -16,12 +17,28 @@ function ParkingForm({ isOpen, onClose }) {
 
   const onSubmit = async (data) => {
     try {
-      // si no existe continuamos
-      await axios.post(`http://localhost:4000/parking/insert`, data);
+      const response = await axios.post(
+        `http://localhost:4000/parking/insert`,
+        data
+      );
+
       setPlazasDisponibles([]);
+      if (response.data.status === "Ok" || response.data.status === 200) {
+        toast.success(
+          response.data.message || "Plaza reservada correctamente",
+          { duration: 2000 }
+        );
+        toast.success("Envio de correo informativo");
+        setTimeout(() => {
+          onClose();
+        }, 100);
+      }
       reset();
     } catch (error) {
       console.log(error.message);
+      toast.error(
+        error.response?.data?.message || "Error al reservar la plaza"
+      );
     }
   };
   const getDisponibles = async (fecha) => {
@@ -67,7 +84,6 @@ function ParkingForm({ isOpen, onClose }) {
             }}
             type="date"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Selecciona una fecha"
           />
           {errors.fecha && <p>{errors.fecha.message}</p>}
         </div>
@@ -77,7 +93,7 @@ function ParkingForm({ isOpen, onClose }) {
             {...register("nombre", { required: "Nombre es requerido" })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Nombre Completo"
+            placeholder="Nombre Completo..."
           />
           {errors.nombre && <p>{errors.nombre.message}</p>}
         </div>
@@ -89,7 +105,7 @@ function ParkingForm({ isOpen, onClose }) {
             })}
             type="email"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Email"
+            placeholder="Email..."
           />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
@@ -105,7 +121,7 @@ function ParkingForm({ isOpen, onClose }) {
             })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Número de Plaza"
+            placeholder="Nº Plaza..."
           >
             {plazasDisponibles.map((plaza) => (
               <option>{plaza.plaza} </option>

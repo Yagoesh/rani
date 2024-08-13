@@ -9,10 +9,8 @@ export const insertTarjetaModel = async (
     // Crear la conexión a la base de datos.
     const pool = await getPool();
 
-    // Obtener las tarjetas.
     const [result] = await pool.query(
-      `
-INSERT INTO tarjetas (idUsoTarjeta , tarjetaNumero, nombre , departamento) VALUES (?,?,?,?)`,
+      `INSERT INTO tarjetas (idUsoTarjeta , tarjetaNumero, nombre , departamento) VALUES (?,?,?,?)`,
       [idUsoTarjeta, tarjetaNumero, nombre, departamento]
     );
     await pool.query(

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TarjetaForm from "./TarjetaForm"; // Importar el nuevo componente de formulario
 import { dateFormat } from "../api/dateFormat";
+import { Toaster } from "react-hot-toast";
+import { formatDate } from "../api/formatDate";
 
 function Tarjetas() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,6 +20,7 @@ function Tarjetas() {
       console.log(error.message);
     }
   };
+
   useEffect(() => {
     getAllTarjetasApi();
   }, [isModalOpen]);
@@ -36,9 +39,10 @@ function Tarjetas() {
 
   return (
     <div className="text-center  ">
+      <Toaster />
       <h2 className="text-2xl mb-4">Tarjetas</h2>
-      <div className="max-h-[400px]  overflow-auto p-4">
-        <table className="border-collapse table-fixed  overflow-auto ">
+      <div className="max-h-[400px]  min-h-[400px] overflow-auto p-4">
+        <table className="border-collapse table-fixed overflow-auto ">
           <tr className=" bg-gray-100">
             <th className=" w-2/6  ">Nombre</th>
             <th className="    ">NºTarjeta</th>
@@ -54,18 +58,20 @@ function Tarjetas() {
               )
               .map((tarjeta) => {
                 const entregaDate = dateFormat(tarjeta.fechaEntrega);
-
+                const formDate = formatDate(entregaDate);
                 tarjeta.fechaDevolucion
-                  ? (devoluDate = dateFormat(tarjeta.fechaDevolucion))
+                  ? (devoluDate = formatDate(
+                      dateFormat(tarjeta.fechaDevolucion)
+                    ))
                   : (devoluDate = "");
                 return (
                   <tr
-                    className="p-2 border-t border-gray-300"
+                    className="p-2 border-t border-gray-300 text-sm"
                     key={tarjeta.idUsoTarjeta}
                   >
                     <td className="p-2">{tarjeta.nombre} </td>
                     <td className="p-2">{tarjeta.tarjetaNumero} </td>
-                    <td className="p-2">{entregaDate}</td>
+                    <td className="p-2">{formDate}</td>
                     <td className="p-2">{devoluDate} </td>
                     <td className="p-2">{tarjeta.estado} </td>
                     <td className="p-2 ">

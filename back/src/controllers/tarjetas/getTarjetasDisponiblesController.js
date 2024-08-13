@@ -2,7 +2,7 @@ import { tarjetasDisponiblesModel } from "../../models/tarjetas/index.js";
 
 export const getTarjetasDisponiblesController = async (req, res, next) => {
   try {
-    // Obtener tarjetas.
+    // Obtener tarjetas disponibles
     const [tarjetas] = await tarjetasDisponiblesModel();
     console.log(tarjetas);
     // responder con los tarjetas

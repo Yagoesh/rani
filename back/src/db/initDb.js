@@ -14,10 +14,10 @@ const initDb = async () => {
 
     // Eliminar las tablas ratings , responses , consultations , doctors_desciplines , desciplines , doctors , users si existen
     console.log(
-      "Eliminando las tablas tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion ,  aquaService si existen "
+      "Eliminando las tablas tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion ,  aquaService, incidencias si existen "
     );
     await pool.query(
-      "DROP TABLE IF EXISTS tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion , aquaService"
+      "DROP TABLE IF EXISTS tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion , aquaService, incidencias"
     );
     console.log("Tablas eliminadas ✅ 🗑");
 
@@ -106,6 +106,16 @@ const initDb = async () => {
     console.log("Tabla incidencias creada ✅ 📑");
 
     console.log("Base de datos inicializada 🚀");
+    console.log("Introducir tarjetas de ejemplo 📑");
+    await pool.query(
+      "INSERT INTO tarjetasEstado (tarjetaNumero , estado) VALUES (1 , 'disponible') , (2 , 'disponible') , (3 , 'disponible'), (4 , 'disponible') , (5 , 'disponible')"
+    );
+    console.log("Tarjetas de ejemplo introducidas ✅📑");
+    console.log("Introducir plazas de ejemplo 📑");
+    await pool.query(
+      "INSERT INTO parkingEstado (plaza , estado) VALUES (1 , 'disponible') , (2 , 'disponible') , (3 , 'disponible'), (4 , 'disponible') , (5 , 'disponible')"
+    );
+    console.log("Plazas de ejemplo introducidas ✅📑");
     process.exit(0);
   } catch (error) {
     process.exit(1);

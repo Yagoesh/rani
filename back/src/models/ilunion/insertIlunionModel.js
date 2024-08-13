@@ -4,7 +4,6 @@ export const insertIlunionModel = async (servicio, observaciones) => {
     // Crear la conexión a la base de datos.
     const pool = await getPool();
 
-    // Obtener las parking.
     const result = await pool.query(
       `INSERT INTO ilunion (servicio , observaciones) VALUES (?, ?) `,
       [servicio, observaciones]

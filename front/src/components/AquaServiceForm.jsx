@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function AquaServiceForm({ isOpen, onClose }) {
   const {
@@ -14,10 +15,22 @@ function AquaServiceForm({ isOpen, onClose }) {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`http://localhost:4000/aquaService/insert`, data);
+      const response = await axios.post(
+        `http://localhost:4000/aquaService/insert`,
+        data
+      );
+      if (response.data.status === "Ok" || response.data.status === 200) {
+        toast.success("Servicio agregado correctamente", { duration: 2000 });
+        setTimeout(() => {
+          onClose();
+        }, 100);
+      }
       reset();
     } catch (error) {
       console.error(error.message);
+      toast.error(
+        error.response?.data?.message || "Error al agregar el servicio"
+      );
     }
   };
 
@@ -36,7 +49,7 @@ function AquaServiceForm({ isOpen, onClose }) {
             {...register("servicio", { required: "Campo requerido" })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Nombre Completo"
+            placeholder="Servicio..."
           />
           {errors.servicio && <p>{errors.servicio.message}</p>}
         </div>
@@ -46,7 +59,7 @@ function AquaServiceForm({ isOpen, onClose }) {
             {...register("observaciones")}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Departamento"
+            placeholder="Observaciones..."
           />
           {errors.observaciones && <p>{errors.observaciones.message}</p>}
         </div>

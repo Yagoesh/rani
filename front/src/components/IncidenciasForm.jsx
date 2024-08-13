@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function IncidenciasForm({ isOpen, onClose }) {
   const {
@@ -14,9 +15,25 @@ function IncidenciasForm({ isOpen, onClose }) {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`http://localhost:4000/incidencias/insert`, data);
+      const response = await axios.post(
+        `http://localhost:4000/incidencias/insert`,
+        data
+      );
+      if (response.data.status === "Ok" || response.data.status === 200) {
+        toast.success(
+          response.data.message || "Incidencia agregada correctamente",
+          { duration: 2000 }
+        );
+
+        setTimeout(() => {
+          onClose();
+        }, 100);
+      }
       reset();
     } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Error al agregar la incidencia"
+      );
       console.error(error.message);
     }
   };
@@ -36,7 +53,7 @@ function IncidenciasForm({ isOpen, onClose }) {
             {...register("servicio", { required: "Campo requerido" })}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Nombre Completo"
+            placeholder="Servicio..."
           />
           {errors.servicio && <p>{errors.servicio.message}</p>}
         </div>
@@ -46,7 +63,7 @@ function IncidenciasForm({ isOpen, onClose }) {
             {...register("observaciones")}
             type="text"
             className="w-full border border-gray-300 rounded p-2"
-            placeholder="Departamento"
+            placeholder="Observaciones..."
           />
           {errors.observaciones && <p>{errors.observaciones.message}</p>}
         </div>
