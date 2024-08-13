@@ -4,7 +4,6 @@ export const getTarjetasDisponiblesController = async (req, res, next) => {
   try {
     // Obtener tarjetas disponibles
     const [tarjetas] = await tarjetasDisponiblesModel();
-    console.log(tarjetas);
     // responder con los tarjetas
     res.status(200).send({
       status: "Ok",

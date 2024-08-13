@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import TarjetaForm from "./TarjetaForm"; // Importar el nuevo componente de formulario
+import TarjetaForm from "./TarjetaForm";
 import { dateFormat } from "../api/dateFormat";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { formatDate } from "../api/formatDate";
 
 function Tarjetas() {
@@ -26,12 +26,21 @@ function Tarjetas() {
   }, [isModalOpen]);
   const handleDevuelto = async (tarjetaNumero) => {
     try {
-      await axios.put(`http://localhost:4000/tarjetas/modify`, {
-        tarjetaNumero,
-      });
+      const response = await axios.put(
+        `http://localhost:4000/tarjetas/modify`,
+        {
+          tarjetaNumero,
+        }
+      );
+      toast.success(
+        response.data.message || "La tarjeta se ha devuelto correctamente"
+      );
       getAllTarjetasApi();
     } catch (error) {
       console.log(error.message);
+      toast.error(
+        error.response?.data?.message || "Error al devolver la tarjeta"
+      );
     }
   };
 
@@ -41,8 +50,8 @@ function Tarjetas() {
     <div className="text-center  ">
       <Toaster />
       <h2 className="text-2xl mb-4">Tarjetas</h2>
-      <div className="max-h-[400px]  min-h-[400px] overflow-auto p-4">
-        <table className="border-collapse table-fixed overflow-auto ">
+      <div className="max-h-[400px]  min-h-[400px] overflow-auto p-1">
+        <table className="border-collapse table-fixed overflow-auto m-5">
           <tr className=" bg-gray-100">
             <th className=" w-2/6  ">Nombre</th>
             <th className="    ">NºTarjeta</th>

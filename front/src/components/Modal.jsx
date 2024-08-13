@@ -1,23 +1,11 @@
-import Tarjetas from "./Tarjetas";
-import Parking from "./Parking";
-import Mantenimiento from "./Mantenimiento";
 import IlunionModal from "./IlunionModal";
 import AquaServiceModal from "./AquaServiceModal";
 import IncidenciasModal from "./Incidencias";
 
-function Modal({ onClose, content, openModal }) {
+function Modal({ onClose, content }) {
   let modalContent;
 
   switch (content) {
-    case "Tarjetas":
-      modalContent = <Tarjetas />;
-      break;
-    case "Parking":
-      modalContent = <Parking />;
-      break;
-    case "Mantenimiento":
-      modalContent = <Mantenimiento onClose={onClose} openModal={openModal} />;
-      break;
     case "IlunionModal":
       modalContent = <IlunionModal />;
       break;

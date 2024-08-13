@@ -26,18 +26,18 @@ function Parking() {
   const today = new Date().toISOString();
 
   return (
-    <div className="text-center">
+    <div className="text-center max-h-[400px] w-full min-h-[400px]">
       <Toaster />
       <h2 className="text-2xl mb-4">Parking</h2>
 
-      <div className="max-h-[400px] min-h-[400px]  overflow-auto ">
-        <table className="border-collapse table-fixed  overflow-fit">
-          <tr className=" bg-gray-100">
+      <div className=" max-h-[400px]  min-h-[400px] overflow-auto p-1 ">
+        <table className="border-collapse table-fixed overflow-auto m-5">
+          <tr className=" bg-gray-100 ">
             <th className=" w-1/5">Fecha </th>
-            <th className="  ">Nombre</th>
-            <th className="max-w-[1/5]">E-mail</th>
-            <th className=" ">Plaza</th>
-            <th className=" ">Reserva</th>
+            <th className=" w-1/5 ">Nombre</th>
+            <th className="w-1/5">E-mail</th>
+            <th className="w-1/5">Plaza</th>
+            <th className=" w-1/5">Reserva</th>
             <th className="">Estado</th>
           </tr>
           <tbody>
