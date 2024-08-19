@@ -50,7 +50,7 @@ function Tarjetas() {
     <div className="text-center  ">
       <Toaster />
       <h2 className="text-2xl mb-4">Tarjetas</h2>
-      <div className="max-h-[400px]  min-h-[400px] overflow-auto p-1">
+      <div className="max-h-[400px]  min-h-[400px] overflow-auto ">
         <table className="border-collapse table-fixed overflow-auto m-5">
           <tr className=" bg-gray-100">
             <th className=" w-2/6  ">Nombre</th>

@@ -7,7 +7,7 @@ module.exports = {
         "29px": "29px",
       },
       boxShadow: {
-        custom2: "10px 10px 30px #8a8a8a, -10px -10px 30px #ffffff",
+        custom2: "1px 1px 20px #8a8a8a, -5px -5px 30px #ffffff",
       },
       backgroundImage: {
         "custom-gradient2": "linear-gradient(145deg, #ffffff, #eeeeee)",
