@@ -1,8 +1,8 @@
-import { gelAllParkingsController } from "./gelAllParkingsController.js";
+import { getAllParkingsController } from "./getAllParkingsController.js";
 import { getParkingDisponiblesController } from "./getParkingDisponiblesController.js";
 import { insertParkingController } from "./parkingUsoController.js";
 export {
-  gelAllParkingsController,
+  getAllParkingsController,
   getParkingDisponiblesController,
   insertParkingController,
 };

@@ -1,7 +1,7 @@
 // Importamos las dependencias.
 import express from "express";
 import {
-  gelAllParkingsController,
+  getAllParkingsController,
   getParkingDisponiblesController,
   insertParkingController,
 } from "../controllers/parking/index.js";
@@ -10,7 +10,7 @@ import {
 export const parkingRouter = express.Router();
 
 // obtener todas las parking usadas
-parkingRouter.get("/parking/all", gelAllParkingsController);
+parkingRouter.get("/parking/all", getAllParkingsController);
 
 // obtener todas las tarjetas disponibles
 parkingRouter.get(

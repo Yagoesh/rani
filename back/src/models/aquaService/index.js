@@ -1,3 +1,3 @@
-import { gelAllAquaServicesModel } from "./gelAllAquaServicesModel.js";
+import { getAllAquaServicesModel } from "./getAllAquaServicesModel.js";
 import { aquaServiceUsoModel } from "./aquaServiceUsoModel.js";
-export { gelAllAquaServicesModel, aquaServiceUsoModel };
+export { getAllAquaServicesModel, aquaServiceUsoModel };

@@ -1,6 +1,7 @@
 import IlunionModal from "./IlunionModal";
 import AquaServiceModal from "./AquaServiceModal";
 import IncidenciasModal from "./Incidencias";
+import JomarModal from "./JomarModal";
 
 function Modal({ onClose, content }) {
   let modalContent;
@@ -14,6 +15,9 @@ function Modal({ onClose, content }) {
       break;
     case "Incidencias":
       modalContent = <IncidenciasModal />;
+      break;
+    case "Jomar":
+      modalContent = <JomarModal />;
       break;
     default:
       modalContent = null;

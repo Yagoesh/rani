@@ -1,3 +1,3 @@
-import { gelAllIlunionsController } from "./gelAllIlunionsController.js";
+import { getAllIlunionsController } from "./getAllIlunionsController.js";
 import { insertIlunionController } from "./insertIlunionController.js";
-export { gelAllIlunionsController, insertIlunionController };
+export { getAllIlunionsController, insertIlunionController };

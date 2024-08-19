@@ -14,10 +14,10 @@ const initDb = async () => {
 
     // Eliminar las tablas ratings , responses , consultations , doctors_desciplines , desciplines , doctors , users si existen
     console.log(
-      "Eliminando las tablas tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion ,  aquaService, incidencias si existen "
+      "Eliminando las tablas tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion ,  aquaService, incidencias, jomar si existen "
     );
     await pool.query(
-      "DROP TABLE IF EXISTS tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion , aquaService, incidencias"
+      "DROP TABLE IF EXISTS tarjetas , tarjetasEstado , parking, parkingEstado ,  ilunion , aquaService, incidencias, jomar"
     );
     console.log("Tablas eliminadas ✅ 🗑");
 
@@ -103,7 +103,19 @@ const initDb = async () => {
       observaciones VARCHAR(100)
     );
         `);
-    console.log("Tabla incidencias creada ✅ 📑");
+
+    console.log("Tabla Jomar creada ✅ 📑");
+
+    // Crear la tabla Jomar
+    console.log("Creando la tabla jomar 📑");
+    await pool.query(`
+            CREATE TABLE jomar (
+          fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+          servicio VARCHAR(100),
+          observaciones VARCHAR(100)
+        );
+            `);
+    console.log("Tabla jomar creada ✅ 📑");
 
     console.log("Base de datos inicializada 🚀");
     console.log("Introducir tarjetas de ejemplo 📑");

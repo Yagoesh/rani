@@ -3,7 +3,7 @@ import express from "express";
 
 // Importamos los controladores.
 import {
-  gelAllIlunionsController,
+  getAllIlunionsController,
   insertIlunionController,
 } from "../controllers/ilunion/index.js";
 
@@ -11,7 +11,7 @@ import {
 export const ilunionRouter = express.Router();
 
 // obtener todas las ilunion usadas
-ilunionRouter.get("/ilunion/all", gelAllIlunionsController);
+ilunionRouter.get("/ilunion/all", getAllIlunionsController);
 
 // Introducir una ilunion en uso:
 ilunionRouter.post("/ilunion/insert", insertIlunionController);

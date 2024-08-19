@@ -1,3 +1,3 @@
-import { gelAllAquaServicesController } from "./gelAllAquaServicesController.js";
+import { getAllAquaServicesController } from "./getAllAquaServicesController.js";
 import { aquaServiceUsoController } from "./aquaServiceUsoController.js";
-export { gelAllAquaServicesController, aquaServiceUsoController };
+export { getAllAquaServicesController, aquaServiceUsoController };

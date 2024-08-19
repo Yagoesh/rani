@@ -2,7 +2,7 @@
 import express from "express";
 
 import {
-  gelAllAquaServicesController,
+  getAllAquaServicesController,
   aquaServiceUsoController,
 } from "../controllers/aquaService/index.js";
 
@@ -10,7 +10,7 @@ import {
 export const aquaServiceRouter = express.Router();
 
 // obtener todas las aquaService usadas
-aquaServiceRouter.get("/aquaService/all", gelAllAquaServicesController);
+aquaServiceRouter.get("/aquaService/all", getAllAquaServicesController);
 
 // Introducir una aquaService en uso:
 aquaServiceRouter.post("/aquaService/insert", aquaServiceUsoController);
