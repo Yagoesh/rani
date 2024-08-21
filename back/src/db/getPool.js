@@ -1,6 +1,7 @@
 // Importar la versión asincrona de mysql2
 import mysql from "mysql2/promise";
 
+import { generateError } from "../utils/errors/generateError.js";
 // Obtener las variables de entorno
 import {
   MYSQL_HOST,
@@ -8,7 +9,6 @@ import {
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
 } from "../../env.js";
-import { generateError } from "../utils/errors/generateError.js";
 
 // Crear una variable para almacenar el pool de conexiones
 let pool;

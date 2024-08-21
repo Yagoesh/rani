@@ -99,7 +99,7 @@ function Tarjetas() {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-center ">
         <button
           className="bg-green-500 text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600"
           onClick={() => {
